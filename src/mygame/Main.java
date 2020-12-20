@@ -53,7 +53,7 @@ public class Main extends SimpleApplication {
     
     void initTreeTest(){
         
-        Spatial model = assetManager.loadModel("Models/first drawing tree.glb");
+        Spatial model = assetManager.loadModel("Models/first drawing tree/first drawing tree.glb");
         rootNode.attachChild(model);
         
     }
@@ -65,3 +65,5 @@ public class Main extends SimpleApplication {
         rootNode.addLight(dl);
     }
 }
+
+
