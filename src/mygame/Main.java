@@ -36,6 +36,9 @@ public class Main extends SimpleApplication {
         
         initTreeTest();
         initLight();
+       
+        
+        
         
         
     }
