@@ -9,6 +9,7 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -38,8 +39,9 @@ public class Main extends SimpleApplication {
         initLight();
        
         
-        
-        
+
+
+ 
         
     }
 
@@ -66,6 +68,13 @@ public class Main extends SimpleApplication {
         dl.setColor(ColorRGBA.White);
         dl.setDirection(new Vector3f(12f, -12f, 12f).normalizeLocal());
         rootNode.addLight(dl);
+        
+        
+        
+                /* this shadow needs a directional light */
+DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(assetManager, 1024, 2);
+dlsr.setLight(dl);
+viewPort.addProcessor(dlsr); 
     }
 }
 
