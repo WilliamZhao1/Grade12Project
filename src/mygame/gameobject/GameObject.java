@@ -7,7 +7,7 @@ package mygame.gameobject;
 
 import com.jme3.app.state.AppStateManager;
 import com.jme3.scene.Spatial;
-import mygame.Main;
+import mygame.state.Main;
 
 /**
  * all game objects that exist 

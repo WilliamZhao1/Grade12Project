@@ -1,4 +1,4 @@
-package mygame;
+package mygame.state;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
@@ -17,11 +17,11 @@ import com.jme3.system.AppSettings;
 /**
  * This is the Main Class of your Game. You should only do initialization here.
  * Move your Logic into AppStates or Controls
- * @author normenhansen
+ * @author leoze
  */
 public class Main extends SimpleApplication {
     
-    public BulletAppState bulletAppState;
+    
     public GameState gameState;
 
     /**
@@ -48,8 +48,7 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
 
-        bulletAppState = new BulletAppState(); // for physics 
-        stateManager.attach(bulletAppState); // try to change this, bulletAppState should not exist in Main
+        
 
         gameState = new GameState();
         stateManager.attach((AppState) gameState); 

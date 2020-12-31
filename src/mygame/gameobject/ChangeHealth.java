@@ -5,15 +5,13 @@
  */
 package mygame.gameobject;
 
-import mygame.state.Main;
-
 /**
- * prop objects 
+ *
  * @author leoze
  */
-public abstract class Prop extends Map{
-
-    public Prop(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
-    }
+public interface ChangeHealth {
+    
+    public void addHealth(int amount);
+    
+    public void removeHealth(int amount);
 }

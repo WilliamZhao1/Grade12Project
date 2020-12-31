@@ -5,7 +5,7 @@
  */
 package mygame.gameobject;
 
-import mygame.Main;
+import mygame.state.Main;
 
 /**
  * characters that can move and attack 

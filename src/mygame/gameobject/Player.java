@@ -12,7 +12,7 @@ import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.math.Vector3f;
-import mygame.Main;
+import mygame.state.Main;
 
 /**
  *
@@ -59,7 +59,7 @@ public class Player implements ActionListener{
         user.setJumpSpeed(20);
         user.setFallSpeed(30);
         
-        main.bulletAppState.getPhysicsSpace().add(user);
+        main.gameState.bulletAppState.getPhysicsSpace().add(user);
         
         user.setGravity(new Vector3f(0,-30f,0));
         
@@ -92,8 +92,6 @@ public class Player implements ActionListener{
         main.getInputManager().addListener(this, "Down");
         main.getInputManager().addListener(this, "Jump");
     }
-
-
 
     /**
      * method from ActionListener 

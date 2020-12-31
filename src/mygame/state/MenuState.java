@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame.gameobject;
+package mygame.state;
 
-import mygame.state.Main;
+import com.jme3.app.state.AbstractAppState;
 
 /**
- * map objects 
+ *
  * @author leoze
  */
-public abstract class Map extends GameObject{
-    
-    Map(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
-    }
+public class MenuState extends AbstractAppState{
     
 }

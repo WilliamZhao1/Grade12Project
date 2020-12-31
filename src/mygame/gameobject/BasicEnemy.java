@@ -8,12 +8,13 @@ package mygame.gameobject;
 import mygame.state.Main;
 
 /**
- * prop objects 
+ *
  * @author leoze
  */
-public abstract class Prop extends Map{
+public abstract class BasicEnemy extends Enemy{
+    
+    public BasicEnemy(Main main, int x, int y, int z, String name, int health, CharacterState state){
+        super(main, x, y, z, name, health, state);
 
-    public Prop(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
     }
 }

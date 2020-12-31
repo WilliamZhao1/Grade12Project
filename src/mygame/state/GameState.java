@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mygame;
+package mygame.state;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
+import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
@@ -42,6 +43,8 @@ public class GameState extends AbstractAppState{
     ChefBoy chefBoy;
     Player player;
     
+    public BulletAppState bulletAppState;
+    
     
     Main main; // main object, this is needed because Main extends SimpleApplication
                 // SimpleApplication contains things like rootNode, camera, assetManager, etc
@@ -60,6 +63,9 @@ public class GameState extends AbstractAppState{
     public void initialize(AppStateManager stateManager, Application app) {
         
         this.main = (Main) app;
+        
+        bulletAppState = new BulletAppState(); // for physics 
+        stateManager.attach(bulletAppState); // try to change this, bulletAppState should not exist in Main
         
         initLight();
         initCamera();

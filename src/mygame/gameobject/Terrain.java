@@ -8,7 +8,7 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
-import mygame.Main;
+import mygame.state.Main;
 
 /**
  * terrain / ground object 
@@ -48,7 +48,7 @@ public class Terrain extends Map{
      * add physics to bulletAppstate 
      */
     void initPhysics(){
-        main.bulletAppState.getPhysicsSpace().add(landscape);
+        main.gameState.bulletAppState.getPhysicsSpace().add(landscape);
     }
 
 
