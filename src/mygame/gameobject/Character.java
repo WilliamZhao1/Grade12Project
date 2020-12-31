@@ -8,7 +8,7 @@ package mygame.gameobject;
 import mygame.Main;
 
 /**
- *
+ * characters that can move and attack 
  * @author leoze
  */
 public abstract class Character extends GameObject{

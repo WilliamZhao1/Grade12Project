@@ -10,7 +10,7 @@ import com.jme3.scene.Spatial;
 import mygame.Main;
 
 /**
- *
+ * all game objects that exist 
  * @author leoze
  */
 public abstract class GameObject {
@@ -22,8 +22,14 @@ public abstract class GameObject {
     
     //public AppStateManager appStateManager;
     
-    
+    /**
+     * init, create model and add to rootNode
+     */
     abstract void init();
+    
+    /**
+     * set position of object 
+     */
     abstract void setPosition();
     
     public GameObject(Main main, int x, int y, int z, String name){

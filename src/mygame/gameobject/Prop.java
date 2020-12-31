@@ -8,7 +8,7 @@ package mygame.gameobject;
 import mygame.Main;
 
 /**
- *
+ * prop objects 
  * @author leoze
  */
 public abstract class Prop extends Map{

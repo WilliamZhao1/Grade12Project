@@ -22,7 +22,14 @@ import com.jme3.system.AppSettings;
 public class Main extends SimpleApplication {
     
     public BulletAppState bulletAppState;
+    public GameState gameState;
 
+    /**
+     * main method 
+     * start program 
+     * disable jmonkey start screen 
+     * @param args 
+     */
     public static void main(String[] args) {
         
         Main app = new Main();
@@ -35,17 +42,17 @@ public class Main extends SimpleApplication {
         app.start();  
     }
 
+    /**
+     * create states
+     */
     @Override
     public void simpleInitApp() {
 
-        bulletAppState = new BulletAppState();
-        stateManager.attach(bulletAppState);
+        bulletAppState = new BulletAppState(); // for physics 
+        stateManager.attach(bulletAppState); // try to change this, bulletAppState should not exist in Main
 
-
-        GameState gameState = new GameState();
-        stateManager.attach((AppState) gameState);
- 
-        
+        gameState = new GameState();
+        stateManager.attach((AppState) gameState); 
     }
 
     @Override

@@ -41,15 +41,12 @@ public class GameState extends AbstractAppState{
     ChefBoy chefBoy;
     
     
-    Main main;
+    Main main; // main object, this is needed because Main extends SimpleApplication
+                // SimpleApplication contains things like rootNode, camera, assetManager, etc
     
-    
-    private Vector3f camDir = new Vector3f();
+    private Vector3f camDir = new Vector3f(); // camera direction / position
     private Vector3f camLeft = new Vector3f();
 
-    public GameState() {
-        
-    }
     
     
     /**
@@ -107,17 +104,6 @@ public class GameState extends AbstractAppState{
      */
     void initTerrain(){
         
-        /*
-        Box boxMesh = new Box(100f,0.1f,100f); 
-        Geometry boxGeo = new Geometry("Colored Box", boxMesh); 
-        
-        Material boxMat = new Material(main.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md"); 
-        boxMat.setBoolean("UseMaterialColors", true); 
-        boxMat.setColor("Ambient", ColorRGBA.Green); 
-        boxMat.setColor("Diffuse", ColorRGBA.Green); 
-        boxGeo.setMaterial(boxMat); 
-        main.getRootNode().attachChild(boxGeo);
-        */
         
         GameObject terrain = new Terrain(main, 0 ,0 ,0 , "terrain");
         
@@ -133,11 +119,16 @@ public class GameState extends AbstractAppState{
         props.add(tree1);
     }
     
-    
+    /**
+     * init chefBoy object 
+     */
     void initChefBoy(){
         this.chefBoy = new ChefBoy(main, 0, 0, 0, "chefBoy", 100, CharacterState.IDLE);
     }
     
+    /**
+     * init all item objects 
+     */
     void initItem(){
         
     }
@@ -156,6 +147,9 @@ public class GameState extends AbstractAppState{
         
     }
     
+    /**
+     * update movement of player
+     */
     void updateMovement(){
         System.out.println(chefBoy.left);
         

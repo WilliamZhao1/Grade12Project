@@ -14,7 +14,7 @@ import com.jme3.math.Vector3f;
 import mygame.Main;
 
 /**
- *
+ * chef boy character 
  * @author leoze
  */
 public class ChefBoy extends Character implements ActionListener{
@@ -30,6 +30,9 @@ public class ChefBoy extends Character implements ActionListener{
         
     }
     
+    /**
+     * init model, collision, position
+     */
     @Override
     void init() {
         
@@ -40,13 +43,9 @@ public class ChefBoy extends Character implements ActionListener{
         
     }
 
-    @Override
-    void setPosition() {
-        
-    }
-    
     /**
      * create collision hit box
+     * add gravity and physics to player 
      */
     void initCollision(){
         CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
@@ -57,9 +56,16 @@ public class ChefBoy extends Character implements ActionListener{
         main.bulletAppState.getPhysicsSpace().add(player);
         
         player.setGravity(new Vector3f(0,-30f,0));
+        
+       
+    }
+    
+    /**
+     * set position of player
+     */
+    @Override
+    void setPosition() {
         player.setPhysicsLocation(new Vector3f(10, 10, 0));
-        
-        
     }
     
     /**
@@ -80,6 +86,13 @@ public class ChefBoy extends Character implements ActionListener{
 
 
 
+    /**
+     * method from ActionListener 
+     * if key is pressed, change to true
+     * @param binding
+     * @param isPressed
+     * @param tpf 
+     */
     @Override
     public void onAction(String binding, boolean isPressed, float tpf) {
         
@@ -98,14 +111,5 @@ public class ChefBoy extends Character implements ActionListener{
             }
         }
     }
-    
-    public void movement(){
-        walkDirection.set(0, 0, 0);
-        
-        System.out.println(player);
-        player.setWalkDirection(walkDirection);
-        main.getCamera().setLocation(player.getPhysicsLocation());
-    }
-
-    
+   
 }

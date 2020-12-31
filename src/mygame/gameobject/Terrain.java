@@ -11,7 +11,7 @@ import com.jme3.bullet.util.CollisionShapeFactory;
 import mygame.Main;
 
 /**
- *
+ * terrain / ground object 
  * @author leoze
  */
 public class Terrain extends Map{
@@ -23,6 +23,11 @@ public class Terrain extends Map{
         init();
     }
     
+    /**
+     * init 
+     * create model, add model to rootNode 
+     * add rigidBody for physics 
+     */
     @Override
     void init() {
         
@@ -33,12 +38,15 @@ public class Terrain extends Map{
         landscape = new RigidBodyControl(sceneShape, 0);
         model.addControl(landscape);
         
-        
         main.getRootNode().attachChild(model);
         setPosition();
         initPhysics();
     }
     
+    /**
+     * init physics 
+     * add physics to bulletAppstate 
+     */
     void initPhysics(){
         main.bulletAppState.getPhysicsSpace().add(landscape);
     }

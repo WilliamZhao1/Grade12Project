@@ -8,7 +8,8 @@ package mygame.gameobject;
 import mygame.Main;
 
 /**
- *
+ * ham 
+ * pig will drop after dying 
  * @author leoze
  */
 public class Ham extends Item{
@@ -22,12 +23,12 @@ public class Ham extends Item{
 
     @Override
     void init() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     void setPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     

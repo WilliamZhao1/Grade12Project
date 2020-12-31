@@ -8,7 +8,7 @@ package mygame.gameobject;
 import mygame.Main;
 
 /**
- *
+ * all items that can be picked up 
  * @author leoze
  */
 public abstract class Item extends GameObject{

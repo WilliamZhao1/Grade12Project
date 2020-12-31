@@ -8,7 +8,7 @@ package mygame.gameobject;
 import mygame.Main;
 
 /**
- *
+ * map objects 
  * @author leoze
  */
 public abstract class Map extends GameObject{

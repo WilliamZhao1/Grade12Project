@@ -6,7 +6,7 @@
 package mygame.gameobject;
 
 /**
- *
+ * character states 
  * @author leoze
  */
 public enum CharacterState {

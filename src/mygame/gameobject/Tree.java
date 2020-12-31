@@ -25,6 +25,13 @@ public class Tree extends Prop{
         init();
     }
 
+    /**
+     * init 
+     * create model
+     * add collision mesh to model
+     * add model to rootNode
+     * add mesh to bulletAppState for physics collision 
+     */
     @Override
     void init() {
         System.out.println(main.getAssetManager().loadModel("Models/first drawing tree/first drawing tree.glb"));
