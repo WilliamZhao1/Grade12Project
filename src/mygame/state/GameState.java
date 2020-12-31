@@ -13,17 +13,24 @@ import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.light.DirectionalLight;
+import com.jme3.light.PointLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
+import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.shadow.DirectionalLightShadowFilter;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
+import com.jme3.shadow.PointLightShadowRenderer;
 import java.util.ArrayList;
 import java.util.Queue;
 import mygame.gameobject.CharacterState;
 import mygame.gameobject.ChefBoy;
 import mygame.gameobject.GameObject;
+import mygame.gameobject.Pig;
 import mygame.gameobject.Player;
 import mygame.gameobject.Terrain;
 import mygame.gameobject.Tree;
@@ -36,14 +43,13 @@ import mygame.gameobject.Tree;
  */
 public class GameState extends AbstractAppState{
     
-    ArrayList inventory;
-    Queue enemies;
-    ArrayList<GameObject> props = new ArrayList<>();
+    ArrayList inventory; // inventory of items 
+    Queue enemies; // queue to spawn enemies 
+    ArrayList<GameObject> props = new ArrayList<>(); // list of all props 
     
-    ChefBoy chefBoy;
-    Player player;
+    Player player; // player object 
     
-    public BulletAppState bulletAppState;
+    public BulletAppState bulletAppState; // controls physics 
     
     
     Main main; // main object, this is needed because Main extends SimpleApplication
@@ -65,7 +71,7 @@ public class GameState extends AbstractAppState{
         this.main = (Main) app;
         
         bulletAppState = new BulletAppState(); // for physics 
-        stateManager.attach(bulletAppState); // try to change this, bulletAppState should not exist in Main
+        stateManager.attach(bulletAppState); // add bulletAppState into state manager
         
         initLight();
         initCamera();
@@ -74,6 +80,7 @@ public class GameState extends AbstractAppState{
         initSky();
         initPlayer();
         initItem();
+        initEnemy();
     }
     
     /**
@@ -82,12 +89,38 @@ public class GameState extends AbstractAppState{
      */
     void initLight(){
         
+        /*
         // TODO can also use different types of light 
         DirectionalLight dl = new DirectionalLight();
         dl.setColor(ColorRGBA.White);
         dl.setDirection(new Vector3f(0f, -30f, 0f).normalizeLocal());
         main.getRootNode().addLight(dl);
+        */
+        
+        
+        DirectionalLight sun = new DirectionalLight();
+        sun.setColor(ColorRGBA.White);
+        //sun.setDirection(main.getCamera().getDirection());
+        sun.setDirection(new Vector3f(0f, -30f, 0f).normalizeLocal());
+        main.getRootNode().addLight(sun);
+        
+
+        final int SHADOWMAP_SIZE=1024;
+        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(main.getAssetManager(), SHADOWMAP_SIZE, 3);
+        dlsr.setLight(sun);
+        main.getViewPort().addProcessor(dlsr);
+
+        DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(main.getAssetManager(), SHADOWMAP_SIZE, 3);
+        dlsf.setLight(sun);
+        dlsf.setEnabled(true);
+        FilterPostProcessor fpp = new FilterPostProcessor(main.getAssetManager());
+        fpp.addFilter(dlsf);
+        main.getViewPort().addProcessor(fpp);
+        
+
     }
+    
+
     
     /**
      * change fly cam speed 
@@ -123,16 +156,31 @@ public class GameState extends AbstractAppState{
      * eg. trees 
      */
     void initProp(){
+        GameObject tree0 = new Tree(main, 5, 0, 20, "tree0");
         GameObject tree1 = new Tree(main, 10, 0, 20, "tree1");
+        GameObject tree2 = new Tree(main, 15, 0, 20, "tree2");
+        GameObject tree3 = new Tree(main, 20, 0, 20, "tree3");
+        GameObject tree4 = new Tree(main, 25, 0, 20, "tree4");
+        
+        props.add(tree0);
         props.add(tree1);
+        props.add(tree2);
+        props.add(tree3);
+        props.add(tree4);
+        
+        props.get(4).model.setLocalScale(2);
+        
+        
+        
     }
     
     /**
      * init chefBoy object 
      */
     void initPlayer(){
+        
         this.player = new Player(main);
-        //this.chefBoy = new ChefBoy(main, 0, 0, 0, "chefBoy", 100, CharacterState.IDLE);
+        
     }
     
     /**
@@ -140,6 +188,10 @@ public class GameState extends AbstractAppState{
      */
     void initItem(){
         
+    }
+    
+    void initEnemy(){
+        GameObject pig0 = new Pig(main, 20, 5, 5, "pig1", 20);
     }
     
     /**

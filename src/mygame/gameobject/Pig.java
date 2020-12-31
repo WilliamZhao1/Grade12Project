@@ -5,6 +5,10 @@
  */
 package mygame.gameobject;
 
+import com.jme3.bullet.collision.shapes.CollisionShape;
+import com.jme3.bullet.control.RigidBodyControl;
+import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.renderer.queue.RenderQueue;
 import mygame.state.Main;
 
 /**
@@ -13,22 +17,31 @@ import mygame.state.Main;
  */
 public class Pig extends BasicEnemy{
 
-    public Pig(Main main, int x, int y, int z, String name, int health, CharacterState state){
-        super(main, x, y, z, name, health, state);
+    public Pig(Main main, int x, int y, int z, String name, int health){
+        super(main, x, y, z, name, health);
         this.damage = 10;
         this.range = 1;
         this.detectionRange = 10;
+        
+        init();
 
     }
     
     @Override
     void init() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        // change to xml file with animation later 
+        model = main.getAssetManager().loadModel("Models/pig/pig.glb");
+        
+        model.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+        
+        main.getRootNode().attachChild(model);    
+        setPosition();
     }
 
     @Override
     void setPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        model.setLocalTranslation(x,y,z);
     }
     
 }

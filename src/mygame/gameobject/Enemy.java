@@ -17,8 +17,8 @@ public abstract class Enemy extends Character{
     int range;
     int detectionRange;
     
-    public Enemy(Main main, int x, int y, int z, String name, int health, CharacterState state){
-        super(main, x, y, z, name, health, state);
+    public Enemy(Main main, int x, int y, int z, String name, int health){
+        super(main, x, y, z, name, health);
 
     }
 }

@@ -16,10 +16,10 @@ public abstract class Character extends GameObject{
     int health;
     CharacterState state;
     
-    public Character(Main main, int x, int y, int z, String name, int health, CharacterState state){
+    public Character(Main main, int x, int y, int z, String name, int health){
         super(main, x, y, z, name);
         this.health = health;
-        this.state = state;
+        this.state = CharacterState.IDLE;
         
     }
     

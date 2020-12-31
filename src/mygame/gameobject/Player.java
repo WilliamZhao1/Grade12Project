@@ -123,7 +123,6 @@ public class Player implements ActionListener{
      * update movement of player
      */
     public void updateMovement(){
-        System.out.println(left);
         
         camDir.set(main.getCamera().getDirection()).multLocal(0.6f);
         camLeft.set(main.getCamera().getLeft()).multLocal(0.4f);

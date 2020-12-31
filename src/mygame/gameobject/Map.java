@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.bullet.collision.shapes.CollisionShape;
 import mygame.state.Main;
 
 /**
@@ -12,6 +13,8 @@ import mygame.state.Main;
  * @author leoze
  */
 public abstract class Map extends GameObject{
+    
+    CollisionShape collisionMesh;
     
     Map(Main main, int x, int y, int z, String name){
         super(main, x, y, z, name);

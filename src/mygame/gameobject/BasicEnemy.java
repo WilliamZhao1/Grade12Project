@@ -13,8 +13,8 @@ import mygame.state.Main;
  */
 public abstract class BasicEnemy extends Enemy{
     
-    public BasicEnemy(Main main, int x, int y, int z, String name, int health, CharacterState state){
-        super(main, x, y, z, name, health, state);
+    public BasicEnemy(Main main, int x, int y, int z, String name, int health){
+        super(main, x, y, z, name, health);
 
     }
 }

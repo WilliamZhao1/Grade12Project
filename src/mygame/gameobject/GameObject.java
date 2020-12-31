@@ -5,7 +5,7 @@
  */
 package mygame.gameobject;
 
-import com.jme3.app.state.AppStateManager;
+import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Spatial;
 import mygame.state.Main;
 
@@ -14,9 +14,9 @@ import mygame.state.Main;
  * @author leoze
  */
 public abstract class GameObject {
-    int x, y, z; // position of object 
+    public int x, y, z; // position of object 
     String name; // name of objct 
-    Spatial model;
+    public Spatial model;
     
     Main main;
     
@@ -39,6 +39,8 @@ public abstract class GameObject {
         this.name = name;
         
         this.main = main;
+        
+        
     }
     
 }

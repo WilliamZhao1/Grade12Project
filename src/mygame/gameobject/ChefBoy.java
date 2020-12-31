@@ -23,9 +23,9 @@ public class ChefBoy extends Character{
     public Vector3f walkDirection = new Vector3f();
     public boolean left = false, right = false, up = false, down = false; // movement
     
-    public ChefBoy(Main main, int x, int y, int z, String name, int health, CharacterState state){
+    public ChefBoy(Main main, int x, int y, int z, String name, int health){
         
-        super(main, x, y, z, name, health, state);
+        super(main, x, y, z, name, health);
         
         init();
         

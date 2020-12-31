@@ -8,6 +8,8 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.renderer.queue.RenderQueue;
+import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Spatial;
 import mygame.state.Main;
 
@@ -34,17 +36,26 @@ public class Tree extends Prop{
      */
     @Override
     void init() {
-        System.out.println(main.getAssetManager().loadModel("Models/first drawing tree/first drawing tree.glb"));
-        model = main.getAssetManager().loadModel("Models/first drawing tree/first drawing tree.glb");
+        
+        model = main.getAssetManager().loadModel("Models/tree/tree.glb");
+        
+        model.setShadowMode(ShadowMode.CastAndReceive);
+        
+        setPosition(); // set position needs to be before creating collision mesh for some reason
 
-        CollisionShape sceneShape = CollisionShapeFactory.createMeshShape(model);
-        landscape = new RigidBodyControl(sceneShape, 0);
+        collisionMesh = CollisionShapeFactory.createMeshShape(model);
+        landscape = new RigidBodyControl(collisionMesh, 0);
         model.addControl(landscape);
         
         
+        
         main.getRootNode().attachChild(model);
-        setPosition();
+        
+        
+        
         initPhysics();
+        
+        
         
     }
     
@@ -54,6 +65,10 @@ public class Tree extends Prop{
 
     @Override
     void setPosition() {
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(z);
+        
         model.setLocalTranslation(x,y,z);
     }
     

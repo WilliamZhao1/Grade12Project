@@ -8,6 +8,8 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.renderer.queue.RenderQueue;
+import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import mygame.state.Main;
 
 /**
@@ -33,9 +35,11 @@ public class Terrain extends Map{
         
         
         model = main.getAssetManager().loadModel("Models/ground/ground.glb");
+        
+        model.setShadowMode(ShadowMode.Receive);
 
-        CollisionShape sceneShape = CollisionShapeFactory.createMeshShape(model);
-        landscape = new RigidBodyControl(sceneShape, 0);
+        collisionMesh = CollisionShapeFactory.createMeshShape(model);
+        landscape = new RigidBodyControl(collisionMesh, 0);
         model.addControl(landscape);
         
         main.getRootNode().attachChild(model);

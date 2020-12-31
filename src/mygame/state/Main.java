@@ -48,8 +48,6 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
 
-        
-
         gameState = new GameState();
         stateManager.attach((AppState) gameState); 
     }
