@@ -1,6 +1,8 @@
 package mygame;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.app.state.AppState;
+import com.jme3.bullet.BulletAppState;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
@@ -17,6 +19,8 @@ import com.jme3.shadow.DirectionalLightShadowRenderer;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
+    
+    public BulletAppState bulletAppState;
 
     public static void main(String[] args) {
         Main app = new Main();
@@ -25,22 +29,13 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        Box b = new Box(1, 1, 1);
-        Geometry geom = new Geometry("Box", b);
 
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", ColorRGBA.Blue);
-        geom.setMaterial(mat);
-
-        rootNode.attachChild(geom);
-        
-        
-        initTreeTest();
-        initLight();
-       
-        
+        bulletAppState = new BulletAppState();
+        stateManager.attach(bulletAppState);
 
 
+        GameState gameState = new GameState();
+        stateManager.attach((AppState) gameState);
  
         
     }
@@ -56,26 +51,6 @@ public class Main extends SimpleApplication {
     }
     
     
-    void initTreeTest(){
-        
-        Spatial model = assetManager.loadModel("Models/first drawing tree/first drawing tree.glb");
-        rootNode.attachChild(model);
-        
-    }
-    
-    public void initLight(){
-        DirectionalLight dl = new DirectionalLight();
-        dl.setColor(ColorRGBA.White);
-        dl.setDirection(new Vector3f(12f, -12f, 12f).normalizeLocal());
-        rootNode.addLight(dl);
-        
-        
-        
-                /* this shadow needs a directional light */
-DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(assetManager, 1024, 2);
-dlsr.setLight(dl);
-viewPort.addProcessor(dlsr); 
-    }
 }
 
 
