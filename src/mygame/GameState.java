@@ -23,6 +23,7 @@ import java.util.Queue;
 import mygame.gameobject.CharacterState;
 import mygame.gameobject.ChefBoy;
 import mygame.gameobject.GameObject;
+import mygame.gameobject.Player;
 import mygame.gameobject.Terrain;
 import mygame.gameobject.Tree;
 
@@ -39,6 +40,7 @@ public class GameState extends AbstractAppState{
     ArrayList<GameObject> props = new ArrayList<>();
     
     ChefBoy chefBoy;
+    Player player;
     
     
     Main main; // main object, this is needed because Main extends SimpleApplication
@@ -64,7 +66,7 @@ public class GameState extends AbstractAppState{
         initTerrain();
         initProp();
         initSky();
-        initChefBoy();
+        initPlayer();
         initItem();
     }
     
@@ -122,8 +124,9 @@ public class GameState extends AbstractAppState{
     /**
      * init chefBoy object 
      */
-    void initChefBoy(){
-        this.chefBoy = new ChefBoy(main, 0, 0, 0, "chefBoy", 100, CharacterState.IDLE);
+    void initPlayer(){
+        this.player = new Player(main);
+        //this.chefBoy = new ChefBoy(main, 0, 0, 0, "chefBoy", 100, CharacterState.IDLE);
     }
     
     /**
@@ -142,36 +145,11 @@ public class GameState extends AbstractAppState{
     @Override
     public void update(float tpf){
         
-        updateMovement();
+        player.updateMovement();
         
         
     }
-    
-    /**
-     * update movement of player
-     */
-    void updateMovement(){
-        System.out.println(chefBoy.left);
-        
-        camDir.set(main.getCamera().getDirection()).multLocal(0.6f);
-        camLeft.set(main.getCamera().getLeft()).multLocal(0.4f);
-        chefBoy.walkDirection.set(0, 0, 0);
-        if (chefBoy.left) {
-            chefBoy.walkDirection.addLocal(camLeft);
-        }
-        if (chefBoy.right) {
-            chefBoy.walkDirection.addLocal(camLeft.negate());
-        }
-        if (chefBoy.up) {
-            chefBoy.walkDirection.addLocal(camDir);
-        }
-        if (chefBoy.down) {
-            chefBoy.walkDirection.addLocal(camDir.negate());
-        }
-        
-        chefBoy.player.setWalkDirection(chefBoy.walkDirection);
-        main.getCamera().setLocation(chefBoy.player.getPhysicsLocation());
-    }
+
     
 
 }
