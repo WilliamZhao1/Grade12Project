@@ -5,13 +5,15 @@
  */
 package mygame.gameobject;
 
+import mygame.Main;
+
 /**
  *
  * @author leoze
  */
 public abstract class Prop extends Map{
 
-    public Prop(int x, int y, int z, String name){
-        super(x, y, z, name);
+    public Prop(Main main, int x, int y, int z, String name){
+        super(main, x, y, z, name);
     }
 }

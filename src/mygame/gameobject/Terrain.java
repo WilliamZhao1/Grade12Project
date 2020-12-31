@@ -8,27 +8,26 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
-import com.jme3.scene.Spatial;
 import mygame.Main;
-
 
 /**
  *
  * @author leoze
  */
-public class Tree extends Prop{
+public class Terrain extends Map{
     
     private RigidBodyControl landscape;
-    
-    public Tree(Main main, int x, int y, int z, String name){
+
+    public Terrain(Main main, int x, int y, int z, String name){
         super(main, x, y, z, name);
         init();
     }
-
+    
     @Override
     void init() {
-        System.out.println(main.getAssetManager().loadModel("Models/first drawing tree/first drawing tree.glb"));
-        model = main.getAssetManager().loadModel("Models/first drawing tree/first drawing tree.glb");
+        
+        
+        model = main.getAssetManager().loadModel("Models/ground/ground.glb");
 
         CollisionShape sceneShape = CollisionShapeFactory.createMeshShape(model);
         landscape = new RigidBodyControl(sceneShape, 0);
@@ -38,16 +37,16 @@ public class Tree extends Prop{
         main.getRootNode().attachChild(model);
         setPosition();
         initPhysics();
-        
     }
     
     void initPhysics(){
         main.bulletAppState.getPhysicsSpace().add(landscape);
     }
 
+
     @Override
     void setPosition() {
-        model.setLocalTranslation(x,y,z);
+        
     }
     
 }

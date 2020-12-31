@@ -12,6 +12,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
+import com.jme3.system.AppSettings;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -23,8 +24,15 @@ public class Main extends SimpleApplication {
     public BulletAppState bulletAppState;
 
     public static void main(String[] args) {
+        
         Main app = new Main();
-        app.start();
+        app.showSettings = false;            
+        AppSettings appSettings = new AppSettings(true);   
+        appSettings.put("Width",1920);      
+        appSettings.put("Height",1080);       
+        appSettings.put("Title", "ChefBoy");          
+        app.setSettings(appSettings);   
+        app.start();  
     }
 
     @Override

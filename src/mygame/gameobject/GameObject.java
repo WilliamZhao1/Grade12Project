@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.app.state.AppStateManager;
 import com.jme3.scene.Spatial;
 import mygame.Main;
 
@@ -17,14 +18,21 @@ public abstract class GameObject {
     String name; // name of objct 
     Spatial model;
     
-    abstract void init(Main main);
-    abstract void setPosition(Main main);
+    Main main;
     
-    public GameObject(int x, int y, int z, String name){
+    //public AppStateManager appStateManager;
+    
+    
+    abstract void init();
+    abstract void setPosition();
+    
+    public GameObject(Main main, int x, int y, int z, String name){
         this.x = x;
         this.y = y;
         this.z = z; 
         this.name = name;
+        
+        this.main = main;
     }
     
 }

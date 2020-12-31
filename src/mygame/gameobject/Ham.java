@@ -13,20 +13,20 @@ import mygame.Main;
  */
 public class Ham extends Item{
     
-    public Ham(int x, int y, int z, String name, float pickUpRadius){
+    public Ham(Main main, int x, int y, int z, String name, float pickUpRadius){
         
-        super(x, y, z, name, pickUpRadius);
+        super(main, x, y, z, name, pickUpRadius);
         
     }
 
 
     @Override
-    void init(Main arg0) {
+    void init() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    void setPosition(Main arg0) {
+    void setPosition() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
