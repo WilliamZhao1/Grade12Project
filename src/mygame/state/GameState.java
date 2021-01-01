@@ -12,6 +12,7 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.light.PointLight;
 import com.jme3.material.Material;
@@ -97,11 +98,12 @@ public class GameState extends AbstractAppState{
         main.getRootNode().addLight(dl);
         */
         
+
+        
         
         DirectionalLight sun = new DirectionalLight();
-        sun.setColor(ColorRGBA.White);
-        //sun.setDirection(main.getCamera().getDirection());
-        sun.setDirection(new Vector3f(0f, -30f, 0f).normalizeLocal());
+        sun.setColor(ColorRGBA.White.mult(1));
+        sun.setDirection(new Vector3f(-0.5f, -1f, -0.5f));
         main.getRootNode().addLight(sun);
         
 
@@ -117,6 +119,23 @@ public class GameState extends AbstractAppState{
         fpp.addFilter(dlsf);
         main.getViewPort().addProcessor(fpp);
         
+        
+        /*
+        DirectionalLight sun1 = new DirectionalLight();
+        sun1.setColor(ColorRGBA.White.mult(2f));
+        sun1.setDirection(new Vector3f(1f, 1f, 0f));
+        main.getRootNode().addLight(sun1);
+        */
+        
+        /*
+        // ambient light requires material to work 
+        AmbientLight al = new AmbientLight();
+        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(1f));
+        al.setEnabled(true);
+        main.getRootNode().addLight(al);
+        */
+        
+
 
     }
     

@@ -8,6 +8,7 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.material.Material;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Spatial;
@@ -37,7 +38,13 @@ public class Tree extends Prop{
     @Override
     void init() {
         
+        //Material mat = new Material(main.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+        
+        
         model = main.getAssetManager().loadModel("Models/tree/tree.glb");
+        
+        //model.setMaterial(mat);
+        
         
         model.setShadowMode(ShadowMode.CastAndReceive);
         
