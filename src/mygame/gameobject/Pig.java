@@ -37,7 +37,7 @@ public class Pig extends BasicEnemy{
         
         model.setMaterial(mat);
         
-        model.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+        model.setShadowMode(RenderQueue.ShadowMode.Receive);
         
         main.getRootNode().attachChild(model);    
         setPosition();

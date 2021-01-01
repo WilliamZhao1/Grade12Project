@@ -46,7 +46,7 @@ public class Tree extends Prop{
         //model.setMaterial(mat);
         
         
-        model.setShadowMode(ShadowMode.CastAndReceive);
+        model.setShadowMode(ShadowMode.Cast);
         
         setPosition(); // set position needs to be before creating collision mesh for some reason
 

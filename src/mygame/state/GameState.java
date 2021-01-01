@@ -107,12 +107,12 @@ public class GameState extends AbstractAppState{
         main.getRootNode().addLight(sun);
         
 
-        final int SHADOWMAP_SIZE=1024;
-        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(main.getAssetManager(), SHADOWMAP_SIZE, 3);
+        final int SHADOWMAP_SIZE=2048;
+        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(main.getAssetManager(), SHADOWMAP_SIZE, 1);
         dlsr.setLight(sun);
         main.getViewPort().addProcessor(dlsr);
 
-        DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(main.getAssetManager(), SHADOWMAP_SIZE, 3);
+        DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(main.getAssetManager(), SHADOWMAP_SIZE, 1);
         dlsf.setLight(sun);
         dlsf.setEnabled(true);
         FilterPostProcessor fpp = new FilterPostProcessor(main.getAssetManager());
@@ -124,13 +124,11 @@ public class GameState extends AbstractAppState{
         
         // ambient light requires material to work 
         AmbientLight al = new AmbientLight();
-        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(2f));
+        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(1f));
         al.setEnabled(true);
         main.getRootNode().addLight(al);
         
         
-
-
     }
     
 
@@ -204,7 +202,7 @@ public class GameState extends AbstractAppState{
     }
     
     void initEnemy(){
-        GameObject pig0 = new Pig(main, 20, 5, 5, "pig1", 20);
+        GameObject pig0 = new Pig(main, 20, 0, 5, "pig1", 20);
     }
     
     /**
