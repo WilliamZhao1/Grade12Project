@@ -102,7 +102,7 @@ public class GameState extends AbstractAppState{
         
         
         DirectionalLight sun = new DirectionalLight();
-        sun.setColor(ColorRGBA.White.mult(1));
+        sun.setColor(ColorRGBA.White.mult(0.2f));
         sun.setDirection(new Vector3f(-0.5f, -1f, -0.5f));
         main.getRootNode().addLight(sun);
         
@@ -120,20 +120,14 @@ public class GameState extends AbstractAppState{
         main.getViewPort().addProcessor(fpp);
         
         
-        /*
-        DirectionalLight sun1 = new DirectionalLight();
-        sun1.setColor(ColorRGBA.White.mult(2f));
-        sun1.setDirection(new Vector3f(1f, 1f, 0f));
-        main.getRootNode().addLight(sun1);
-        */
         
-        /*
+        
         // ambient light requires material to work 
         AmbientLight al = new AmbientLight();
-        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(1f));
+        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(2f));
         al.setEnabled(true);
         main.getRootNode().addLight(al);
-        */
+        
         
 
 

@@ -41,7 +41,7 @@ public class Tree extends Prop{
         //Material mat = new Material(main.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
         
         
-        model = main.getAssetManager().loadModel("Models/tree/tree.glb");
+        model = main.getAssetManager().loadModel("Models/tree/first drawing tree.glb");
         
         //model.setMaterial(mat);
         
