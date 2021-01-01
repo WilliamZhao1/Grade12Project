@@ -38,12 +38,12 @@ public class Tree extends Prop{
     @Override
     void init() {
         
-        //Material mat = new Material(main.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+        Material mat = main.getAssetManager().loadMaterial("Materials/purple1.j3m");
         
         
         model = main.getAssetManager().loadModel("Models/tree/first drawing tree.glb");
         
-        //model.setMaterial(mat);
+        model.setMaterial(mat);
         
         
         model.setShadowMode(ShadowMode.Cast);

@@ -102,7 +102,7 @@ public class GameState extends AbstractAppState{
         
         
         DirectionalLight sun = new DirectionalLight();
-        sun.setColor(ColorRGBA.White.mult(0.2f));
+        sun.setColor(ColorRGBA.White.mult(0.8f));
         sun.setDirection(new Vector3f(-0.5f, -1f, -0.5f));
         main.getRootNode().addLight(sun);
         
@@ -112,19 +112,21 @@ public class GameState extends AbstractAppState{
         dlsr.setLight(sun);
         main.getViewPort().addProcessor(dlsr);
 
+        // NOTE: use either renderer or filter, rednerer can change cast/receive setting 
+        /*
         DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(main.getAssetManager(), SHADOWMAP_SIZE, 1);
         dlsf.setLight(sun);
         dlsf.setEnabled(true);
         FilterPostProcessor fpp = new FilterPostProcessor(main.getAssetManager());
         fpp.addFilter(dlsf);
         main.getViewPort().addProcessor(fpp);
-        
+        */
         
         
         
         // ambient light requires material to work 
         AmbientLight al = new AmbientLight();
-        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(1f));
+        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(0.2f));
         al.setEnabled(true);
         main.getRootNode().addLight(al);
         
