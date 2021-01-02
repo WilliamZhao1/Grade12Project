@@ -9,6 +9,7 @@ import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import mygame.state.Main;
@@ -21,8 +22,8 @@ public class Terrain extends Map{
     
     private RigidBodyControl landscape;
 
-    public Terrain(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
+    public Terrain(Main main, Vector3f position, String name){
+        super(main, position, name);
         init();
     }
     
@@ -34,9 +35,9 @@ public class Terrain extends Map{
     @Override
     void init() {
         
-        Material mat = main.getAssetManager().loadMaterial("Materials/terrain.j3m");
+        Material mat = main.getAssetManager().loadMaterial("Materials/ground dots test.j3m");
         
-        model = main.getAssetManager().loadModel("Models/ground/floor.glb");
+        model = main.getAssetManager().loadModel("Models/ground/floor.j3o");
         
         model.setMaterial(mat);
         
@@ -60,10 +61,6 @@ public class Terrain extends Map{
     }
 
 
-    @Override
-    void setPosition() {
-        
-    }
     
     @Override
     void delete() {

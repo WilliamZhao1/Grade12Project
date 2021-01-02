@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.math.Vector3f;
 import mygame.state.Main;
 
 /**
@@ -15,8 +16,8 @@ public abstract class Item extends GameObject{
     
     float pickUpRadius;
     
-    public Item(Main main, int x, int y, int z, String name, float pickUpRadius){
-        super(main, x, y, z, name);
+    public Item(Main main, Vector3f position, String name, float pickUpRadius){
+        super(main, position, name);
         this.pickUpRadius = pickUpRadius;
     }
 }

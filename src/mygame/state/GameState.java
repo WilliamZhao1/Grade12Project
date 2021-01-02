@@ -16,10 +16,13 @@ import java.util.Queue;
 import mygame.gameobject.Enemy;
 import mygame.gameobject.GameLight;
 import mygame.gameobject.GameObject;
+import mygame.gameobject.Ham;
+import mygame.gameobject.Item;
 import mygame.gameobject.Pig;
 import mygame.gameobject.Player;
 import mygame.gameobject.Terrain;
 import mygame.gameobject.Tree;
+import mygame.gameobject.Volcano;
 
 /**
  * state for in game init all game objects update all game objects
@@ -40,6 +43,8 @@ public class GameState extends AbstractAppState {
 
     Main main; // main object, this is needed because Main extends SimpleApplication
                 // SimpleApplication contains things like rootNode, camera, assetManager, etc
+    
+    Vector3f position = new Vector3f(0, 0, 0);
 
 
     /**
@@ -99,7 +104,8 @@ public class GameState extends AbstractAppState {
      */
     void initTerrain() {
 
-        GameObject terrain = new Terrain(main, 0, 0, 0, "terrain");
+        
+        GameObject terrain = new Terrain(main, position, "terrain");
     }
 
     /**
@@ -107,11 +113,12 @@ public class GameState extends AbstractAppState {
      */
     void initProp() {
         
-        GameObject tree0 = new Tree(main, 5, 0, 20, "tree0");
-        GameObject tree1 = new Tree(main, 10, 0, 20, "tree1");
-        GameObject tree2 = new Tree(main, 15, 0, 20, "tree2");
-        GameObject tree3 = new Tree(main, 20, 0, 20, "tree3");
-        GameObject tree4 = new Tree(main, 25, 0, 20, "tree4");
+    
+        GameObject tree0 = new Tree(main, new Vector3f(5, 0, 20), "tree0");
+        GameObject tree1 = new Tree(main, new Vector3f(10, 0, 20), "tree1");
+        GameObject tree2 = new Tree(main, new Vector3f(15, 0, 20), "tree2");
+        GameObject tree3 = new Tree(main, new Vector3f(20, 0, 20), "tree3");
+        GameObject tree4 = new Tree(main, new Vector3f(25, 0, 20), "tree4");
 
         props.add(tree0);
         props.add(tree1);
@@ -120,6 +127,8 @@ public class GameState extends AbstractAppState {
         props.add(tree4);
 
         props.get(4).model.setLocalScale(2);
+        
+        GameObject volcano = new Volcano(main, new Vector3f(50, 0, 50), "volcano");
     }
 
     /**
@@ -134,12 +143,12 @@ public class GameState extends AbstractAppState {
      * init all item objects
      */
     void initItem() {
-
+        Item ham = new Ham(main, new Vector3f(5, 0, 5), "ham", 10 );
     }
 
     void initEnemy() {
         
-        Enemy pig0 = new Pig(main, 20, 0, 5, "pig1", 20);
+        Enemy pig0 = new Pig(main, new Vector3f(20, 20, 5), "pig1", 20);
         enemies.add(pig0);
     }
 
@@ -154,8 +163,8 @@ public class GameState extends AbstractAppState {
         player.updateMovement();
         
         for(int i = 0; i < enemies.size(); i++){
-            enemies.get(i).detection(player);
-            enemies.get(i).attack(player);
+            enemies.get(i).behaviour(player);
+            //((Pig)ememies.get(i)). 
         }
         
     }

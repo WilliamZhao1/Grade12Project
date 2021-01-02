@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Spatial;
 import mygame.state.Main;
@@ -15,17 +16,15 @@ import mygame.state.Main;
  */
 public abstract class GameObject {
     
-    public int x, y, z; // position of object 
+    public Vector3f position; // position of object 
     String name; // name of objct 
     public Spatial model;
     
     Main main;
    
-    public GameObject(Main main, int x, int y, int z, String name){
+    public GameObject(Main main, Vector3f position, String name){
         
-        this.x = x;
-        this.y = y;
-        this.z = z; 
+        this.position = position;
         this.name = name;
         this.main = main; 
     }
@@ -38,7 +37,9 @@ public abstract class GameObject {
     /**
      * set position of object 
      */
-    abstract void setPosition();
+    public void setPosition(){
+        model.setLocalTranslation(position);
+    }
     
     /**
      * delete object when finished

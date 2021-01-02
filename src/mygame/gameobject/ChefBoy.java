@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.math.Vector3f;
 import mygame.state.Main;
 
 /**
@@ -14,9 +15,9 @@ import mygame.state.Main;
 public class ChefBoy extends Character{
     
     
-    public ChefBoy(Main main, int x, int y, int z, String name, int health){
+    public ChefBoy(Main main, Vector3f position, String name, int health){
         
-        super(main, x, y, z, name, health);
+        super(main, position, name, health);
         
         init();
         
@@ -28,10 +29,7 @@ public class ChefBoy extends Character{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    void setPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
     @Override
     void delete() {

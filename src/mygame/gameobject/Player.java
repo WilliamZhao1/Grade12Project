@@ -60,12 +60,12 @@ public class Player implements ActionListener{
     void initCollision(){
         CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape(1.5f, 6f, 1);
         user = new CharacterControl(capsuleShape, 0.05f);
-        user.setJumpSpeed(20);
-        user.setFallSpeed(30);
+        user.setJumpSpeed(60);
+        user.setFallSpeed(60);
         
         main.gameState.bulletAppState.getPhysicsSpace().add(user);
         
-        user.setGravity(new Vector3f(0,-30f,0));
+        user.setGravity(new Vector3f(0,-60f,0));
         
        
     }
@@ -74,7 +74,7 @@ public class Player implements ActionListener{
      * set position of player
      */
     void setPosition() {
-        user.setPhysicsLocation(new Vector3f(10, 10, 0));
+        user.setPhysicsLocation(new Vector3f(-40, 10, 0));
     }
     
     /**
@@ -117,7 +117,7 @@ public class Player implements ActionListener{
         } else if (binding.equals("Down")) {
             down = isPressed;
         } else if (binding.equals("Jump")) {
-            if (isPressed) {
+            if (isPressed && user.onGround()) {
                 user.jump(new Vector3f(0, 20f, 0));
             }
         }
@@ -151,7 +151,7 @@ public class Player implements ActionListener{
         main.getCamera().setLocation(user.getPhysicsLocation()); // update camera position to player position
         
         position = user.getPhysicsLocation();
-        System.out.println(user.getPhysicsLocation());
+        
     }
     
 }

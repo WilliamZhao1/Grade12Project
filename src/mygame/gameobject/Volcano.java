@@ -5,26 +5,22 @@
  */
 package mygame.gameobject;
 
-import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue;
-import com.jme3.renderer.queue.RenderQueue.ShadowMode;
-import com.jme3.scene.Spatial;
 import mygame.state.Main;
-
 
 /**
  *
  * @author leoze
  */
-public class Tree extends Prop{
+public class Volcano extends Prop{
     
     private RigidBodyControl landscape;
     
-    public Tree(Main main, Vector3f position, String name){
+    public Volcano(Main main, Vector3f position, String name){
         super(main, position, name);
         init();
     }
@@ -39,15 +35,15 @@ public class Tree extends Prop{
     @Override
     void init() {
         
-        Material mat = main.getAssetManager().loadMaterial("Materials/tree.j3m");
+        Material mat = main.getAssetManager().loadMaterial("Materials/volcano.j3m");
         
         
-        model = main.getAssetManager().loadModel("Models/tree/first drawing tree.j3o");
+        model = main.getAssetManager().loadModel("Models/volcano/volcano.j3o");
         
         model.setMaterial(mat);
         
         
-        model.setShadowMode(ShadowMode.Cast);
+        model.setShadowMode(RenderQueue.ShadowMode.Cast);
         
         setPosition(); // set position needs to be before creating collision mesh for some reason
 
@@ -59,12 +55,8 @@ public class Tree extends Prop{
         
         main.getRootNode().attachChild(model);
         
-        
-        
         initPhysics();
-        
-        
-        
+  
         
     }
     

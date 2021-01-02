@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.math.Vector3f;
 import mygame.state.Main;
 
 /**
@@ -13,7 +14,7 @@ import mygame.state.Main;
  */
 public abstract class Prop extends Map{
 
-    public Prop(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
+    public Prop(Main main, Vector3f position, String name){
+        super(main, position, name);
     }
 }

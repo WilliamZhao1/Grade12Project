@@ -9,6 +9,7 @@ import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue;
 import mygame.state.Main;
 
@@ -18,11 +19,12 @@ import mygame.state.Main;
  */
 public class Pig extends BasicEnemy{
 
-    public Pig(Main main, int x, int y, int z, String name, int health){
-        super(main, x, y, z, name, health);
+    public Pig(Main main, Vector3f position, String name, int health){
+        super(main, position, name, health);
         this.damage = 10;
+        this.speed = 0.01;
         this.range = 10;
-        this.detectionRange = 100;
+        this.detectionRange = 30;
         
         init();
 
@@ -33,7 +35,7 @@ public class Pig extends BasicEnemy{
         
         Material mat = main.getAssetManager().loadMaterial("Materials/orange1.j3m");
         // change to xml file with animation later 
-        model = main.getAssetManager().loadModel("Models/pig/pig.glb");
+        model = main.getAssetManager().loadModel("Models/pig/pig.j3o");
         
         model.setMaterial(mat);
         
@@ -41,13 +43,19 @@ public class Pig extends BasicEnemy{
         
         main.getRootNode().attachChild(model);    
         setPosition();
-    }
-
-    @Override
-    void setPosition() {
-        model.setLocalTranslation(x,y,z);
+        initCollision();
     }
     
+    void initCollision(){
+        
+        phy = new RigidBodyControl(2f);
+        System.out.println(model);
+        model.addControl(phy);
+        main.gameState.bulletAppState.getPhysicsSpace().add(phy);
+       
+    }
+
+
     @Override
     void delete() {
         main.getRootNode().detachChild(model);

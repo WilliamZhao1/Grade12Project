@@ -5,6 +5,7 @@
  */
 package mygame.gameobject;
 
+import com.jme3.math.Vector3f;
 import mygame.state.Main;
 
 /**
@@ -13,8 +14,8 @@ import mygame.state.Main;
  */
 public class Sky extends Map{
 
-    public Sky(Main main, int x, int y, int z, String name){
-        super(main, x, y, z, name);
+    public Sky(Main main, Vector3f position, String name){
+        super(main, position, name);
     }
     
     @Override
@@ -22,10 +23,6 @@ public class Sky extends Map{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    void setPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     void delete() {
