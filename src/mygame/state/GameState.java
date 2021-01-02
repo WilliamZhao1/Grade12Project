@@ -9,27 +9,10 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.BulletAppState;
-import com.jme3.bullet.collision.shapes.CollisionShape;
-import com.jme3.bullet.control.RigidBodyControl;
-import com.jme3.bullet.util.CollisionShapeFactory;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.light.PointLight;
-import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.renderer.queue.RenderQueue.ShadowMode;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Spatial;
-import com.jme3.scene.shape.Box;
-import com.jme3.shadow.DirectionalLightShadowFilter;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
-import com.jme3.shadow.PointLightShadowRenderer;
 import java.util.ArrayList;
 import java.util.Queue;
-import mygame.gameobject.CharacterState;
-import mygame.gameobject.ChefBoy;
 import mygame.gameobject.GameLight;
 import mygame.gameobject.GameObject;
 import mygame.gameobject.Pig;
@@ -56,8 +39,6 @@ public class GameState extends AbstractAppState {
     Main main; // main object, this is needed because Main extends SimpleApplication
     // SimpleApplication contains things like rootNode, camera, assetManager, etc
 
-    private Vector3f camDir = new Vector3f(); // camera direction / position
-    private Vector3f camLeft = new Vector3f();
 
     /**
      * init all models, lighting, camera, physics, objects, and add them to game

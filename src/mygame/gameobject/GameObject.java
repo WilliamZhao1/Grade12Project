@@ -14,23 +14,20 @@ import mygame.state.Main;
  * @author leoze
  */
 public abstract class GameObject {
+    
     public int x, y, z; // position of object 
     String name; // name of objct 
     public Spatial model;
     
     Main main;
    
-    
-
     public GameObject(Main main, int x, int y, int z, String name){
+        
         this.x = x;
         this.y = y;
         this.z = z; 
         this.name = name;
-        
-        this.main = main;
-        
-        
+        this.main = main; 
     }
     
     /**
@@ -44,7 +41,7 @@ public abstract class GameObject {
     abstract void setPosition();
     
     /**
-     * delete 
+     * delete object when finished
      */
     abstract void delete();
     
