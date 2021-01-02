@@ -148,7 +148,7 @@ public class GameState extends AbstractAppState {
 
     void initEnemy() {
         
-        Enemy pig0 = new Pig(main, new Vector3f(20, 20, 5), "pig1", 20);
+        Enemy pig0 = new Pig(main, new Vector3f(20, 0, 5), "pig1", 20);
         enemies.add(pig0);
     }
 

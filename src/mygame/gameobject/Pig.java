@@ -52,6 +52,8 @@ public class Pig extends BasicEnemy{
         System.out.println(model);
         model.addControl(phy);
         main.gameState.bulletAppState.getPhysicsSpace().add(phy);
+        
+        
        
     }
 
