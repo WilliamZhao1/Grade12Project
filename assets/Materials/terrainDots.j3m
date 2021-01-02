@@ -1,6 +1,6 @@
 Material My Material : Common/MatDefs/Light/Lighting.j3md {
      MaterialParameters {
-        DiffuseMap : "Models/ground/groundUVwithcolor.jpg"
+        DiffuseMap : "Materials/terrainDotsUV.jpg"
      }
     AdditionalRenderState {
     }

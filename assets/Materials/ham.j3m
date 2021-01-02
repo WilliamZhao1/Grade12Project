@@ -1,6 +1,6 @@
 Material My Material : Common/MatDefs/Light/Lighting.j3md {
      MaterialParameters {
-        DiffuseMap : "Models/ham/hamUVcolor.png"
+        DiffuseMap : "Materials/hamUV.png"
      }
     AdditionalRenderState {
     }

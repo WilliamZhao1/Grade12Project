@@ -27,13 +27,14 @@ public class Pig extends BasicEnemy{
         this.detectionRange = 30;
         
         init();
+        setPosition();
 
     }
     
     @Override
     void init() {
         
-        Material mat = main.getAssetManager().loadMaterial("Materials/orange1.j3m");
+        Material mat = main.getAssetManager().loadMaterial("Materials/orange.j3m");
         // change to xml file with animation later 
         model = main.getAssetManager().loadModel("Models/pig/pig.j3o");
         
@@ -42,20 +43,9 @@ public class Pig extends BasicEnemy{
         model.setShadowMode(RenderQueue.ShadowMode.Cast);
         
         main.getRootNode().attachChild(model);    
-        setPosition();
-        initCollision();
+
     }
     
-    void initCollision(){
-        
-        phy = new RigidBodyControl(2f);
-        System.out.println(model);
-        model.addControl(phy);
-        main.gameState.bulletAppState.getPhysicsSpace().add(phy);
-        
-        
-       
-    }
 
 
     @Override

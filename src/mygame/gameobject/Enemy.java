@@ -28,10 +28,6 @@ public abstract class Enemy extends Character{
     
     public void behaviour(Player player){
         
-        position = phy.getPhysicsLocation();
-        
-        
-        
         detection(player);
         
         attack(player);
@@ -98,8 +94,9 @@ public abstract class Enemy extends Character{
             this.position.x -= xDiff * speed;
             this.position.z -= zDiff * speed;
             
-            phy.setPhysicsLocation(position);
             setPosition();
+            
+
         }
     }
     

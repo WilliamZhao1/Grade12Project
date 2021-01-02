@@ -35,9 +35,9 @@ public class Terrain extends Map{
     @Override
     void init() {
         
-        Material mat = main.getAssetManager().loadMaterial("Materials/ground dots test.j3m");
+        Material mat = main.getAssetManager().loadMaterial("Materials/terrainDots.j3m");
         
-        model = main.getAssetManager().loadModel("Models/ground/floor.j3o");
+        model = main.getAssetManager().loadModel("Models/terrain/terrain.j3o");
         
         model.setMaterial(mat);
         

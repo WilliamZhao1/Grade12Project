@@ -24,7 +24,6 @@ public abstract class Character extends GameObject{
     int health;
     CharacterState state;
     public CharacterControl character;
-    public RigidBodyControl phy;
     public Vector3f walkDirection = new Vector3f();
     
     public Character(Main main, Vector3f position, String name, int health){

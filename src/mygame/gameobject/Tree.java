@@ -42,7 +42,7 @@ public class Tree extends Prop{
         Material mat = main.getAssetManager().loadMaterial("Materials/tree.j3m");
         
         
-        model = main.getAssetManager().loadModel("Models/tree/first drawing tree.j3o");
+        model = main.getAssetManager().loadModel("Models/tree/tree.j3o");
         
         model.setMaterial(mat);
         
