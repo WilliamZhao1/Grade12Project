@@ -31,5 +31,8 @@ public class Ham extends Item{
         
     }
     
-    
+    @Override
+    void delete() {
+        main.getRootNode().detachChild(model);
+    }    
 }

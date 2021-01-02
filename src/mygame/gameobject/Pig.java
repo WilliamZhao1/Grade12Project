@@ -8,6 +8,7 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.material.Material;
 import com.jme3.renderer.queue.RenderQueue;
 import mygame.state.Main;
 
@@ -30,10 +31,13 @@ public class Pig extends BasicEnemy{
     @Override
     void init() {
         
+        Material mat = main.getAssetManager().loadMaterial("Materials/orange1.j3m");
         // change to xml file with animation later 
         model = main.getAssetManager().loadModel("Models/pig/pig.glb");
         
-        model.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+        model.setMaterial(mat);
+        
+        model.setShadowMode(RenderQueue.ShadowMode.Cast);
         
         main.getRootNode().attachChild(model);    
         setPosition();
@@ -42,6 +46,11 @@ public class Pig extends BasicEnemy{
     @Override
     void setPosition() {
         model.setLocalTranslation(x,y,z);
+    }
+    
+    @Override
+    void delete() {
+        main.getRootNode().detachChild(model);
     }
     
 }
