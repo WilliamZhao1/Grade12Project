@@ -84,6 +84,8 @@ public class GameState extends AbstractAppState {
 
     /**
      * change fly cam speed
+     * camera is attached to player's head, so this doesn't matter for now
+     * flycam still works if camera is not based on player position 
      */
     void initCamera() {
 
@@ -95,7 +97,7 @@ public class GameState extends AbstractAppState {
      */
     void initSky() {
         
-        main.getViewPort().setBackgroundColor(new ColorRGBA(1f, 0.7f, 0.8f, 1f));
+        main.getViewPort().setBackgroundColor(new ColorRGBA(1f, 0.7f, 0.5f, 1f));
     }
 
     /**
