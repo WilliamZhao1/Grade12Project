@@ -38,7 +38,7 @@ public class Tree extends Prop{
     @Override
     void init() {
         
-        Material mat = main.getAssetManager().loadMaterial("Materials/purple1.j3m");
+        Material mat = main.getAssetManager().loadMaterial("Materials/tree.j3m");
         
         
         model = main.getAssetManager().loadModel("Models/tree/first drawing tree.glb");

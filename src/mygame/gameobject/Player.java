@@ -22,11 +22,13 @@ public class Player implements ActionListener{
     
     public CharacterControl user; // object for controling player
     
-    public Vector3f walkDirection = new Vector3f();
+    public Vector3f walkDirection = new Vector3f(); // direction of walking (change in position, not current position)
     public boolean left = false, right = false, up = false, down = false; // movement
     
-    private Vector3f camDir = new Vector3f(); // camera direction / position
+    private Vector3f camDir = new Vector3f(); // camera direction
     private Vector3f camLeft = new Vector3f();
+    
+    Vector3f position = new Vector3f(); // current player position 
     
     Main main;
     
@@ -45,6 +47,8 @@ public class Player implements ActionListener{
         setKeys();
         initCollision();
         setPosition();
+        
+        user.getWalkDirection();
         
         
     }
@@ -127,6 +131,7 @@ public class Player implements ActionListener{
         camDir.set(main.getCamera().getDirection()).multLocal(0.6f);
         camLeft.set(main.getCamera().getLeft()).multLocal(0.4f);
         walkDirection.set(0, 0, 0);
+        
         if (left) {
             walkDirection.addLocal(camLeft);
         }
@@ -140,8 +145,13 @@ public class Player implements ActionListener{
             walkDirection.addLocal(camDir.negate());
         }
         
+        walkDirection.y = 0; // make sure player does not increase in y axis (up)
+        
         user.setWalkDirection(walkDirection);
         main.getCamera().setLocation(user.getPhysicsLocation()); // update camera position to player position
+        
+        position = user.getPhysicsLocation();
+        System.out.println(user.getPhysicsLocation());
     }
     
 }

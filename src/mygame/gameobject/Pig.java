@@ -21,8 +21,8 @@ public class Pig extends BasicEnemy{
     public Pig(Main main, int x, int y, int z, String name, int health){
         super(main, x, y, z, name, health);
         this.damage = 10;
-        this.range = 1;
-        this.detectionRange = 10;
+        this.range = 10;
+        this.detectionRange = 100;
         
         init();
 
@@ -52,5 +52,6 @@ public class Pig extends BasicEnemy{
     void delete() {
         main.getRootNode().detachChild(model);
     }
+    
     
 }

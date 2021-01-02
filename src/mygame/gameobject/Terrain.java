@@ -8,6 +8,7 @@ package mygame.gameobject;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
+import com.jme3.material.Material;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import mygame.state.Main;
@@ -33,8 +34,11 @@ public class Terrain extends Map{
     @Override
     void init() {
         
+        Material mat = main.getAssetManager().loadMaterial("Materials/terrain.j3m");
         
-        model = main.getAssetManager().loadModel("Models/ground/ground.glb");
+        model = main.getAssetManager().loadModel("Models/ground/floor.glb");
+        
+        model.setMaterial(mat);
         
         model.setShadowMode(ShadowMode.Receive);
 

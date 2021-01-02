@@ -13,6 +13,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import java.util.ArrayList;
 import java.util.Queue;
+import mygame.gameobject.Enemy;
 import mygame.gameobject.GameLight;
 import mygame.gameobject.GameObject;
 import mygame.gameobject.Pig;
@@ -28,7 +29,8 @@ import mygame.gameobject.Tree;
 public class GameState extends AbstractAppState {
 
     ArrayList inventory; // inventory of items 
-    Queue enemies; // queue to spawn enemies 
+    Queue enemyQueue; // queue to spawn enemies 
+    ArrayList<Enemy> enemies = new ArrayList<>(); // list to store enemies 
     ArrayList<GameObject> props = new ArrayList<>(); // list of all props 
     GameLight gameLight; // lighting
 
@@ -37,7 +39,7 @@ public class GameState extends AbstractAppState {
     public BulletAppState bulletAppState; // controls physics 
 
     Main main; // main object, this is needed because Main extends SimpleApplication
-    // SimpleApplication contains things like rootNode, camera, assetManager, etc
+                // SimpleApplication contains things like rootNode, camera, assetManager, etc
 
 
     /**
@@ -88,7 +90,7 @@ public class GameState extends AbstractAppState {
      */
     void initSky() {
         
-        main.getViewPort().setBackgroundColor(new ColorRGBA(0.7f, 0.8f, 1f, 1f));
+        main.getViewPort().setBackgroundColor(new ColorRGBA(1f, 0.7f, 0.8f, 1f));
     }
 
     /**
@@ -137,7 +139,8 @@ public class GameState extends AbstractAppState {
 
     void initEnemy() {
         
-        GameObject pig0 = new Pig(main, 20, 0, 5, "pig1", 20);
+        Enemy pig0 = new Pig(main, 20, 0, 5, "pig1", 20);
+        enemies.add(pig0);
     }
 
     /**
@@ -149,5 +152,11 @@ public class GameState extends AbstractAppState {
     public void update(float tpf) {
 
         player.updateMovement();
+        
+        for(int i = 0; i < enemies.size(); i++){
+            enemies.get(i).detection(player);
+            enemies.get(i).attack(player);
+        }
+        
     }
 }
