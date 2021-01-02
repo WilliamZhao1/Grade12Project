@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Queue;
 import mygame.gameobject.CharacterState;
 import mygame.gameobject.ChefBoy;
+import mygame.gameobject.GameLight;
 import mygame.gameobject.GameObject;
 import mygame.gameobject.Pig;
 import mygame.gameobject.Player;
@@ -37,43 +38,42 @@ import mygame.gameobject.Terrain;
 import mygame.gameobject.Tree;
 
 /**
- * state for in game 
- * init all game objects 
- * update all game objects 
+ * state for in game init all game objects update all game objects
+ *
  * @author leoze
  */
-public class GameState extends AbstractAppState{
-    
+public class GameState extends AbstractAppState {
+
     ArrayList inventory; // inventory of items 
     Queue enemies; // queue to spawn enemies 
     ArrayList<GameObject> props = new ArrayList<>(); // list of all props 
-    
+    GameLight gameLight; // lighting
+
     Player player; // player object 
-    
+
     public BulletAppState bulletAppState; // controls physics 
-    
-    
+
     Main main; // main object, this is needed because Main extends SimpleApplication
-                // SimpleApplication contains things like rootNode, camera, assetManager, etc
-    
+    // SimpleApplication contains things like rootNode, camera, assetManager, etc
+
     private Vector3f camDir = new Vector3f(); // camera direction / position
     private Vector3f camLeft = new Vector3f();
 
-    
-    
     /**
-     * init all models, lighting, camera, physics, objects, and add them to game world 
+     * init all models, lighting, camera, physics, objects, and add them to game
+     * world
+     *
      * @param stateManager
-     * @param app 
+     * @param app
      */
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
-        
+
         this.main = (Main) app;
-        
+
         bulletAppState = new BulletAppState(); // for physics 
         stateManager.attach(bulletAppState); // add bulletAppState into state manager
-        
+
         initLight();
         initCamera();
         initTerrain();
@@ -82,145 +82,91 @@ public class GameState extends AbstractAppState{
         initPlayer();
         initItem();
         initEnemy();
+
     }
-    
+
     /**
-     * create a directional light to represent sun 
-     * 
+     * init lighting for game
+     *
      */
-    void initLight(){
-        
-        /*
-        // TODO can also use different types of light 
-        DirectionalLight dl = new DirectionalLight();
-        dl.setColor(ColorRGBA.White);
-        dl.setDirection(new Vector3f(0f, -30f, 0f).normalizeLocal());
-        main.getRootNode().addLight(dl);
-        */
-        
+    void initLight() {
 
-        
-        
-        DirectionalLight sun = new DirectionalLight();
-        sun.setColor(ColorRGBA.White.mult(0.8f));
-        sun.setDirection(new Vector3f(-0.5f, -1f, -0.5f));
-        main.getRootNode().addLight(sun);
-        
-
-        final int SHADOWMAP_SIZE=2048;
-        DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(main.getAssetManager(), SHADOWMAP_SIZE, 1);
-        dlsr.setLight(sun);
-        main.getViewPort().addProcessor(dlsr);
-
-        // NOTE: use either renderer or filter, rednerer can change cast/receive setting 
-        /*
-        DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(main.getAssetManager(), SHADOWMAP_SIZE, 1);
-        dlsf.setLight(sun);
-        dlsf.setEnabled(true);
-        FilterPostProcessor fpp = new FilterPostProcessor(main.getAssetManager());
-        fpp.addFilter(dlsf);
-        main.getViewPort().addProcessor(fpp);
-        */
-        
-        
-        
-        // ambient light requires material to work 
-        AmbientLight al = new AmbientLight();
-        al.setColor(new ColorRGBA(1f, 0.5f, 0.5f, 1f).mult(0.2f));
-        al.setEnabled(true);
-        main.getRootNode().addLight(al);
-        
-        
+        gameLight = new GameLight(main);
     }
-    
 
-    
     /**
-     * change fly cam speed 
+     * change fly cam speed
      */
-    void initCamera(){
+    void initCamera() {
+
         main.getFlyByCamera().setMoveSpeed(30);
     }
-    
 
-    
     /**
-     * set sky color to light blue 
+     * set sky color to light blue
      */
-    void initSky(){
+    void initSky() {
+        
         main.getViewPort().setBackgroundColor(new ColorRGBA(0.7f, 0.8f, 1f, 1f));
     }
-    
-    /**
-     * init ground terrain 
-     * a flat square for now 
-     * TODO change terrain to different model 
-     */
-    void initTerrain(){
-        
-        
-        GameObject terrain = new Terrain(main, 0 ,0 ,0 , "terrain");
-        
 
-    }
-    
     /**
-     * init all props 
-     * eg. trees 
+     * init ground terrain a flat square for now TODO change terrain to
+     * different model
      */
-    void initProp(){
+    void initTerrain() {
+
+        GameObject terrain = new Terrain(main, 0, 0, 0, "terrain");
+    }
+
+    /**
+     * init all props eg. trees
+     */
+    void initProp() {
+        
         GameObject tree0 = new Tree(main, 5, 0, 20, "tree0");
         GameObject tree1 = new Tree(main, 10, 0, 20, "tree1");
         GameObject tree2 = new Tree(main, 15, 0, 20, "tree2");
         GameObject tree3 = new Tree(main, 20, 0, 20, "tree3");
         GameObject tree4 = new Tree(main, 25, 0, 20, "tree4");
-        
+
         props.add(tree0);
         props.add(tree1);
         props.add(tree2);
         props.add(tree3);
         props.add(tree4);
-        
+
         props.get(4).model.setLocalScale(2);
-        
-        
-        
     }
-    
+
     /**
-     * init chefBoy object 
+     * init chefBoy object
      */
-    void initPlayer(){
-        
+    void initPlayer() {
+
         this.player = new Player(main);
-        
     }
-    
+
     /**
-     * init all item objects 
+     * init all item objects
      */
-    void initItem(){
-        
+    void initItem() {
+
     }
-    
-    void initEnemy(){
+
+    void initEnemy() {
+        
         GameObject pig0 = new Pig(main, 20, 0, 5, "pig1", 20);
     }
-    
+
     /**
-     * game updates 
-     * update enemy behaviour, enemy position, chef boy 
-     * etc 
-     * @param tpf 
+     * game updates update enemy behaviour, enemy position, chef boy etc
+     *
+     * @param tpf
      */
     @Override
-    public void update(float tpf){
-        
+    public void update(float tpf) {
+
         player.updateMovement();
-        
-        
     }
-
-    
-
 }

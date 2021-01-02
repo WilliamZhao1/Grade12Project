@@ -19,8 +19,19 @@ public abstract class GameObject {
     public Spatial model;
     
     Main main;
+   
     
-    //public AppStateManager appStateManager;
+
+    public GameObject(Main main, int x, int y, int z, String name){
+        this.x = x;
+        this.y = y;
+        this.z = z; 
+        this.name = name;
+        
+        this.main = main;
+        
+        
+    }
     
     /**
      * init, create model and add to rootNode
@@ -32,15 +43,10 @@ public abstract class GameObject {
      */
     abstract void setPosition();
     
-    public GameObject(Main main, int x, int y, int z, String name){
-        this.x = x;
-        this.y = y;
-        this.z = z; 
-        this.name = name;
-        
-        this.main = main;
-        
-        
-    }
+    /**
+     * delete 
+     */
+    abstract void delete();
+    
     
 }

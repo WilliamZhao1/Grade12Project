@@ -48,4 +48,9 @@ public class Pig extends BasicEnemy{
         model.setLocalTranslation(x,y,z);
     }
     
+    @Override
+    void delete() {
+        main.getRootNode().detachChild(model);
+    }
+    
 }

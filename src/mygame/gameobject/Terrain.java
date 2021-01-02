@@ -61,4 +61,9 @@ public class Terrain extends Map{
         
     }
     
+    @Override
+    void delete() {
+        main.getRootNode().detachChild(model);
+    }
+    
 }

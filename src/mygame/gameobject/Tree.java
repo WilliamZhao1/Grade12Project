@@ -64,6 +64,7 @@ public class Tree extends Prop{
         
         
         
+        
     }
     
     void initPhysics(){
@@ -77,6 +78,11 @@ public class Tree extends Prop{
         System.out.println(z);
         
         model.setLocalTranslation(x,y,z);
+    }
+
+    @Override
+    void delete() {
+        main.getRootNode().detachChild(model);
     }
     
 }
