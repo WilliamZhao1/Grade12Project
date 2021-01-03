@@ -13,6 +13,7 @@ import mygame.state.Main;
  * @author leoze
  */
 public abstract class Item extends GameObject{
+    boolean playerPickUp;
     
     float pickUpRadius;
     
@@ -28,6 +29,10 @@ public abstract class Item extends GameObject{
         double z = this.position.z;
         double z1 = player.position.z;
         distance = Math.sqrt(Math.pow(x1-x, 2) + Math.pow(z1-z, 2));
+        
+        if (pickUpRadius < distance){
+            playerPickUp = true; 
+        }
         
     } 
 }
