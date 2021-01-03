@@ -22,6 +22,7 @@ public class Ham extends Item{
     public Ham(Main main, Vector3f position, String name, float pickUpRadius){
         
         super(main, position, name, pickUpRadius);
+        this.pickUpRadius = 5;
         init();
     }
 

@@ -20,4 +20,14 @@ public abstract class Item extends GameObject{
         super(main, position, name);
         this.pickUpRadius = pickUpRadius;
     }
+    void detection(Player player){
+         double distance;
+        
+        double x = this.position.x;
+        double x1 = player.position.x;
+        double z = this.position.z;
+        double z1 = player.position.z;
+        distance = Math.sqrt(Math.pow(x1-x, 2) + Math.pow(z1-z, 2));
+        
+    } 
 }
