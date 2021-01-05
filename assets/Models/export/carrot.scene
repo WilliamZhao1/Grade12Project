@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exporter: blender2ogre 0.8.0 -->
+<!-- export_time: Tue, 05 Jan 2021 07:53:28 +0000 -->
+<!-- previous_export_time: Tue, 05 Jan 2021 03:20:24 +0000 -->
+<scene author="ningy" formatVersion="1.1" >
+  <nodes >
+    <node name="Armature" >
+      <position x="-0.169681" y="0.874069" z="3.434180" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <node name="carrot" >
+        <position x="0.030978" y="0.201904" z="0.003005" />
+        <rotation qw="0.707107" qx="0.707107" qy="0.000000" qz="0.000000" />
+        <scale x="1.000000" y="1.000000" z="1.000000" />
+        <userData >
+          <property data="101" name="uid" type="int" />
+        </userData>
+        <entity meshFile="carrot.mesh" name="carrot" >
+          <userData />
+        </entity>
+      </node>
+    </node>
+    <node name="Sun" >
+      <position x="4.652909" y="-4.841845" z="8.313329" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <userData >
+        <property data="100" name="uid" type="int" />
+      </userData>
+    </node>
+    <node name="Camera" >
+      <position x="7.481132" y="-6.507640" z="5.343665" />
+      <rotation qw="0.781600" qx="0.481707" qy="0.212922" qz="0.334251" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <camera fov="0.5033799435163735" name="Camera" projectionType="perspective" >
+        <clipping far="100.0" near="0.10000000149011612" />
+      </camera>
+    </node>
+  </nodes>
+  <externals />
+  <environment >
+    <colourBackground b="0.05087608844041824" g="0.05087608844041824" r="0.05087608844041824" />
+  </environment>
+</scene>

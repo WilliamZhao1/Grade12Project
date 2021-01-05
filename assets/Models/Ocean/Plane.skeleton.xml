@@ -1,0 +1,49 @@
+<skeleton>
+    <bones>
+        <bone id="0" name="Bone">
+            <position x="0" y="0" z="0" />
+            <rotation angle="1.5708">
+                <axis x="1" y="0" z="0" />
+            </rotation>
+        </bone>
+    </bones>
+    <bonehierarchy />
+    <animations>
+        <animation name="my_animation" length="8.3">
+            <tracks>
+                <track bone="Bone">
+                    <keyframes>
+                        <keyframe time="0">
+                            <translate x="0" y="0" z="0" />
+                            <rotate angle="3.14159">
+                                <axis x="0" y="0" z="1" />
+                            </rotate>
+                            <scale x="-2.151" y="-2.151" z="-2.151" />
+                        </keyframe>
+                        <keyframe time="0.033333">
+                            <translate x="0" y="0" z="0" />
+                            <rotate angle="3.14159">
+                                <axis x="0" y="0" z="1" />
+                            </rotate>
+                            <scale x="-2.151" y="-2.151" z="-2.151" />
+                        </keyframe>
+                        <keyframe time="8.26667">
+                            <translate x="0" y="0" z="0" />
+                            <rotate angle="3.14159">
+                                <axis x="0" y="0" z="1" />
+                            </rotate>
+                            <scale x="-2.151" y="-2.151" z="-2.151" />
+                        </keyframe>
+                        <keyframe time="8.3">
+                            <translate x="0" y="0" z="0" />
+                            <rotate angle="3.14159">
+                                <axis x="0" y="0" z="1" />
+                            </rotate>
+                            <scale x="-2.151" y="-2.151" z="-2.151" />
+                        </keyframe>
+                    </keyframes>
+                </track>
+            </tracks>
+        </animation>
+    </animations>
+</skeleton>
